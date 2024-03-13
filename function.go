@@ -2,9 +2,9 @@ package function
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"fmt"
-	"context"
 	"log"
 	"net/http"
 	"net/url"
@@ -153,7 +153,7 @@ type PubSubMessage struct {
 	Data []byte `json:"data"`
 }
 
-func ReportAlertToTeams(ctx context.Context, m PubSubMessage) error{
+func ReportAlertToTeams(ctx context.Context, m PubSubMessage) error {
 
 	log.Println(string(m.Data))
 
@@ -161,7 +161,6 @@ func ReportAlertToTeams(ctx context.Context, m PubSubMessage) error{
 	if teamsWebhookURL == "" {
 		log.Fatalln("`TEAMS_WEBHOOK_URL` is not set in the environments")
 	}
-
 
 	if _, err := url.Parse(teamsWebhookURL); err != nil {
 		log.Fatalln(err)
@@ -190,5 +189,5 @@ func ReportAlertToTeams(ctx context.Context, m PubSubMessage) error{
 		log.Fatalln("unexpected status code", res.StatusCode)
 	}
 	return nil
-	
+
 }

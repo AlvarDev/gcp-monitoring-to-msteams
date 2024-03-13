@@ -26,7 +26,7 @@ gcloud functions deploy YOUR_FUNCTION_NAME \
 --entry-point=ReportAlertToTeams \
 --memory=256MB \
 --region=YOUR_REGION \
---runtime=go118 \
+--runtime=go121 \
 --trigger-topic=YOUR_PUBSUB_TOPIC_NAME \
 --min-instances 0 \
 --max-instances 3 \ 
